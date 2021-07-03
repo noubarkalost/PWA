@@ -7,23 +7,23 @@
 
 <div>
   <label>Use Letters</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseLetters()" type="checkbox" />
 </div>
 
 <div>
   <label>Use Numbers</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseNumbers()" type="checkbox" />
 </div>
 
 <div>
   <label>Use Symbols</label>
-  <input type="checkbox" />
+  <input (change)="onChangeUseSymbols()" type="checkbox" />
 </div>
 
 <div>
-  <button>Generate!</button>
+  <button (click)="onButtonClick()">Generate!</button>
 </div>
 <div>
   <label>Your Password</label>
-  <input />
+  <input [value]="getPassword()" />
 </div>
