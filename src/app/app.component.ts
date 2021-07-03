@@ -20,7 +20,6 @@ export class AppComponent {
     this.includeSymbols = !this.includeSymbols;
   }
   onButtonClick() {
-    console.log(this.includeLetters, this.includeNumbers, this.includeSymbols);
     this.password = 'my password';
   }
   getPassword() {
