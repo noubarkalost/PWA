@@ -11,9 +11,9 @@ export class AppComponent {
   includeSymbols = false;
   includeNumbers = false;
   password = '';
-  onChangeLength(event: Event) {
-    const target = event.target as HTMLInputElement;
-    const parsedValue = parseInt(target.value);
+  onChangeLength(event: any) {
+    const { value } = event.target;
+    const parsedValue = parseInt(value);
     if (!isNaN(parsedValue)) {
       this.length = parsedValue;
       console.log(parsedValue);
@@ -29,7 +29,25 @@ export class AppComponent {
     this.includeSymbols = !this.includeSymbols;
   }
   onButtonClick() {
-    this.password = 'my password';
+    const numbers = '1234567890';
+    const letters = 'abcdefghijklmnopqrstuvwxyz';
+    const symbols = '!@#$%^&*()';
+    let valideCHars = '';
+    if (this.includeLetters) {
+      valideCHars += letters;
+    }
+    if (this.includeNumbers) {
+      valideCHars += numbers;
+    }
+    if (this.includeSymbols) {
+      valideCHars += symbols;
+    }
+    let generatedPassword = '';
+    for (let i = 0; i < this.length; i++) {
+      const index = Math.floor(Math.random() * valideCHars.length);
+      generatedPassword += valideCHars[index];
+    }
+    this.password = generatedPassword;
   }
   getPassword() {
     return this.password;
