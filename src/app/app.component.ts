@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClipboardService } from 'ngx-clipboard';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  length = 0;
-  includeLetters = false;
-  includeSymbols = false;
-  includeNumbers = false;
-  footerDate = new Date(Date.now()).getFullYear().toString();
-  password = '';
+  constructor(private clipboardApi: ClipboardService) {}
+
+  length: number = 0;
+  includeLetters: boolean = false;
+  includeSymbols: boolean = false;
+  includeNumbers: boolean = false;
+  footerDate: any = new Date(Date.now()).getFullYear().toString();
+  password: string = '';
+  isCopied: boolean = false;
   onChangeLength(event: any) {
     const { value } = event.target;
     const parsedValue = parseInt(value);
@@ -52,5 +56,18 @@ export class AppComponent {
   }
   getPassword() {
     return this.password;
+  }
+  copyText() {
+    this.clipboardApi.copyFromContent(this.password);
+    this.isCopied = true;
+    console.log(this.isCopied);
+    this.resetIsCopied();
+    console.log(this.isCopied);
+  }
+  resetIsCopied() {
+    setTimeout(() => {
+      this.isCopied = false;
+      console.log(this.isCopied);
+    }, 2000);
   }
 }

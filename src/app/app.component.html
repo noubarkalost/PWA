@@ -55,6 +55,15 @@
       <div class="box" *ngIf="password">
         <label>Your Password</label>
         <input class="input" [value]="password" />
+        <div class="columns is-centered">
+          <button
+            class="button is-primary is-rounded copy-password"
+            (click)="copyText()"
+            *ngIf="password"
+          >
+            Copy Your Password
+          </button>
+        </div>
       </div>
     </div>
   </div>
