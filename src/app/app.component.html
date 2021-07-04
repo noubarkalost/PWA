@@ -6,6 +6,9 @@
       <div class="field">
         <label>Length</label>
         <input class="input" (input)="onChangeLength($event)" />
+        <span class="error-message">{{
+          length > 64 ? "The length cannot be more than 64" : null
+        }}</span>
       </div>
 
       <div class="field">
@@ -37,7 +40,11 @@
 
       <button
         [disabled]="
-          !(length && (includeLetters || includeSymbols || includeNumbers))
+          !(
+            length &&
+            length < 64 &&
+            (includeLetters || includeSymbols || includeNumbers)
+          )
         "
         (click)="onButtonClick()"
         class="button is-link is-fullwidth"

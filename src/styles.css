@@ -21,3 +21,7 @@ body {
 .box {
   width: 100%;
 }
+.error-message {
+  color: red;
+  font-size: 12px;
+}
