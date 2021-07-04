@@ -10,6 +10,7 @@ export class AppComponent {
   includeLetters = false;
   includeSymbols = false;
   includeNumbers = false;
+  footerDate = new Date(Date.now()).getFullYear().toString();
   password = '';
   onChangeLength(event: any) {
     const { value } = event.target;
@@ -32,20 +33,20 @@ export class AppComponent {
     const numbers = '1234567890';
     const letters = 'abcdefghijklmnopqrstuvwxyz';
     const symbols = '!@#$%^&*()';
-    let valideCHars = '';
+    let valideChars = '';
     if (this.includeLetters) {
-      valideCHars += letters;
+      valideChars += letters;
     }
     if (this.includeNumbers) {
-      valideCHars += numbers;
+      valideChars += numbers;
     }
     if (this.includeSymbols) {
-      valideCHars += symbols;
+      valideChars += symbols;
     }
     let generatedPassword = '';
     for (let i = 0; i < this.length; i++) {
-      const index = Math.floor(Math.random() * valideCHars.length);
-      generatedPassword += valideCHars[index];
+      const index = Math.floor(Math.random() * valideChars.length);
+      generatedPassword += valideChars[index];
     }
     this.password = generatedPassword;
   }
