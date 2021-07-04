@@ -5,7 +5,7 @@
 
       <div class="field">
         <label>Length</label>
-        <input class="input" (input)="onChangeLength($event)" />
+        <input class="input" (input)="onChangeLength($event.target.value)" />
       </div>
 
       <div class="field">
@@ -35,13 +35,9 @@
         </div>
       </div>
 
-      <button
-        [disabled]="
+      <button [disabled]="
           !(length && (includeLetters || includeSymbols || includeNumbers))
-        "
-        (click)="onButtonClick()"
-        class="button is-link is-fullwidth"
-      >
+        " (click)="onButtonClick()" class="button is-link is-fullwidth">
         Generate!
       </button>
 
