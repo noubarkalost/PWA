@@ -68,6 +68,6 @@ export class AppComponent {
     setTimeout(() => {
       this.isCopied = false;
       console.log(this.isCopied);
-    }, 2000);
+    }, 4000);
   }
 }
